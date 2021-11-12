@@ -7,6 +7,11 @@
 " ctrl+x ctrl+o -> omnifunc
 set omnifunc=syntaxcomplete#Complete
 
+"MuComplete settings
+set completeopt+=menuone
+set shortmess+=c
+set belloff+=ctrlg
+
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode

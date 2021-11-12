@@ -19,7 +19,7 @@ autocmd FileType vim,lua,nginx set shiftwidth=2 softtabstop=2
 autocmd FileType asm set noexpandtab shiftwidth=8 softtabstop=0 syntax=nasm
 
 " Python
-autocmd FileType python setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Tabs and spaces
 set tabstop=4 " display 4 spaces whenever there is a tab
