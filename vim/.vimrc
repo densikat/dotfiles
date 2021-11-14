@@ -13,7 +13,6 @@ endif"
 
 " GUI stuff
 autocmd vimenter * colorscheme torte
-highlight Pmenu ctermbg=gray guibg=gray
 set background=dark
 
 " Highlight incremental search and search terms
@@ -38,7 +37,7 @@ source ~/.vim/autocomplete.vim
 set backspace=indent,eol,start
 
 " Turn of auto-commenting
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set formatoptions-=cro
 
 " Line number settings
 set number
@@ -60,3 +59,10 @@ source ~/.vim/linting.vim
 
 " Status line
 source ~/.vim/statusline.vim
+
+" X86 Assembly
+source ~/.vim/asmx86.vim
+
+highlight Pmenu ctermbg=gray guibg=gray
+hi MatchParen ctermfg=black
+hi MatchParen ctermbg=white

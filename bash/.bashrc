@@ -37,7 +37,7 @@ alias profile='f(){ export AWS_PROFILE="$1"; unset -f f; }; f'
 alias assume='f(){ auth "$1" && profile "$1"; unset -f f; }; f'
 alias ssh="kitty +kitten ssh"
 
-export PATH="$HOME/opt/cross/bin:/home/david/.cargo/bin:/usr/local/opt/llvm/bin:/usr/local/opt/gnu-getopt/bin:${PATH}"
+export PATH="$HOME/opt/cross/bin:/home/david/.local/kitty.app/bin:/home/david/.cargo/bin:/usr/local/opt/llvm/bin:/usr/local/opt/gnu-getopt/bin:${PATH}"
 export AIRFLOW_HOME=/Users/david/airflow2
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'

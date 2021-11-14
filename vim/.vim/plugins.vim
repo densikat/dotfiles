@@ -4,9 +4,11 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'lifepillar/vim-mucomplete'
 Plug 'davidhalter/jedi-vim'
 Plug 'hashivim/vim-terraform'
+Plug 'sheerun/vim-polyglot'
 Plug 'jdsimcoe/hyper.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'jiangmiao/auto-pairs'
+Plug 'fladson/vim-kitty'
 call plug#end()
 
 " Python Settings

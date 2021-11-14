@@ -7,3 +7,5 @@ vim/.vim/plugged/jedi-vim
 vim/.vim/plugged/vim-highlightedyank
 vim/.vim/plugged/vim-mucomplete
 vim/.vim/plugged/vim-terraform
+vim/.vim/pack/default/start/onedark
+vim/.vim/plugged/vim-polyglot
