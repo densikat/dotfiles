@@ -1,11 +1,12 @@
         #!/bin/bash
 
-        rm -rf ~/.bashrc ~/.gitignore ~/.vimrc ~/.vim ~/.alacritty.yml ~/.config/kitty ~/.config/tmuxinator
+        rm -rf ~/.bashrc ~/.gitignore ~/.vimrc ~/.vim ~/.alacritty.yml ~/.config/kitty ~/.config/tmuxinator ~/.emacs.d
         stow -vSt ~ bash
         stow -vSt ~ vim
         stow -vSt ~ alacritty
         stow -vSt ~ kitty
         stow -vSt ~ tmuxinator
+        stow -vSt ~ emacs
 
         rm -f ~/.gitignore
         echo "tags" > ~/.gitignore
