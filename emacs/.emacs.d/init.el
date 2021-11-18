@@ -74,11 +74,11 @@
 
 ;; FONTS
 
-(set-face-attribute 'default nil :font "Fira Code Retina")
+;(set-face-attribute 'default nil :font "Fira Code Retina")
 ;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina")
+;(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina")
 ;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Cantarell")
+;(set-face-attribute 'variable-pitch nil :font "Cantarell")
 (set-face-attribute 'default nil :height (* 13 10));13pt
 (set-face-attribute 'fixed-pitch nil :height (* 13 10));13pt
 (set-face-attribute 'variable-pitch nil :height (* 13 10));13pt

@@ -9,4 +9,11 @@ vim/.vim/plugged/vim-mucomplete
 vim/.vim/plugged/vim-terraform
 vim/.vim/pack/default/start/onedark
 vim/.vim/plugged/vim-polyglot
+vim/.vim/plugged/
+
+nvim/.config/nvim/.vim/pack/
+nvim/.config/nvim/.vim/black/
+nvim/.config/nvim/.vim/plugged/
 emacs/.emacs.d/elpa
+emacs/.emacs.d/recentf
+
