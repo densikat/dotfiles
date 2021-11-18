@@ -5,6 +5,7 @@
 "set path+=**
 set wildignore=*.o,*.obj,*~,*.pyc,*.bin "stuff to ignore when tab completing
 set wildignore+=**/node_modules/**
+set wildignore+=/node_modules/**
 set wildignore+=__pycache__/
 set wildignore+=.git,.gitkeep
 set wildignore+=.venv

@@ -34,10 +34,14 @@ let autocomplete_path = glob(data_dir.'autocomplete.vim')
 let filetype_path = glob(data_dir.'filetype.vim')
 let filesearch_path = glob(data_dir.'filesearch.vim')
 let tags_path = glob(data_dir.'tags.vim')
-let netrw_path = glob(data_dir.'netrw.vim')
 let linting_path = glob(data_dir.'linting.vim')
 let statusline_path = glob(data_dir.'statusline.vim')
 let asmx86_path = glob(data_dir.'asmx86.vim')
+let lsp_path = glob(data_dir.'lua/typescript.lua')
+let tree_path = glob(data_dir.'lua/nvimtree.lua')
+
+" LEADER KEY
+let mapleader = " " " map leader to Space
 
 exec "source " . plugin_path
 
@@ -53,9 +57,6 @@ exec "source " . filesearch_path
 " Tags
 exec "source " . tags_path
 
-" File explorer
-exec "source " . netrw_path
-
 " Linting
 exec "source " . linting_path
 
@@ -64,6 +65,12 @@ exec "source " . statusline_path
 
 " X86 Assembly
 exec "source " . asmx86_path
+
+" LSP (for typescript)
+exec "source " . lsp_path
+
+" NVIM tree
+exec "source " . tree_path
 
 highlight Pmenu ctermbg=gray guibg=gray
 hi MatchParen ctermfg=black

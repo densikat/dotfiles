@@ -13,6 +13,20 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-vividchalk'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'chriskempson/base16-vim'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+" Typescript stuff
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
 call plug#end()
 
 " Python Settings
@@ -28,3 +42,5 @@ let g:terraform_fmt_on_save = 1
 " Yank highlighting
 let g:highlightedyank_highlight_duration = 150
 
+" Tree
+nnoremap <F2> :NvimTreeToggle<CR>

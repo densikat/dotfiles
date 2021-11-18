@@ -1,6 +1,6 @@
         #!/bin/bash
 
-        rm -rf ~/.bashrc ~/.gitignore ~/.vimrc ~/.vim ~/.alacritty.yml ~/.config/kitty ~/.config/tmuxinator ~/.emacs.d
+        rm -rf ~/.bashrc ~/.gitignore ~/.vimrc ~/.vim ~/.alacritty.yml ~/.config/kitty ~/.config/tmuxinator ~/.emacs.d ~/.config/nvim
         stow -vSt ~ bash
         stow -vSt ~ vim
         stow -vSt ~ alacritty
