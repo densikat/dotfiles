@@ -17,4 +17,8 @@ nvim/.config/nvim/.vim/black/
 nvim/.config/nvim/.vim/plugged/
 emacs/.emacs.d/elpa
 emacs/.emacs.d/recentf
-
+emacs/.emacs.d/.cache/
+emacs/.emacs.d/auto-save-list/
+emacs/.emacs.d/elpy/
+emacs/.emacs.d/projectile-bookmarks.eld
+emacs/.emacs.d/recentf~
