@@ -10,6 +10,7 @@ vim/.vim/plugged/vim-terraform
 vim/.vim/pack/default/start/onedark
 vim/.vim/plugged/vim-polyglot
 vim/.vim/plugged/
+vim/.vim/.netrwhist
 
 nvim/.config/nvim/.vim/pack/
 nvim/.config/nvim/.vim/black/

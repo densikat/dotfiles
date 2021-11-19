@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/david/Code/EA/ea-dm-base-infra'
+let g:netrw_dirhist_1='/Users/david/Code/EA/ea-dm-base-infra/infra'
+let g:netrw_dirhist_0='/Users/david/Code/EA/ea-dm-base-infra'
 let g:netrw_dirhist_9='/Users/david/Code/EA/ea-dm-base-infra/infra/s3'
 let g:netrw_dirhist_8='/Users/david/Code/EA/ea-dm-base-infra/infra/s3-recon'
 let g:netrw_dirhist_7='/Users/david/Code/EA/ea-dm-base-infra/infra'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_6='/Users/david/Code/EA/ea-dm-base-infra'
 let g:netrw_dirhist_5='/Users/david/Code/EA/ea-dm-base-infra/infra/s3-recon'
 let g:netrw_dirhist_4='/Users/david/Code/EA/ea-dm-base-infra/infra/s3'
 let g:netrw_dirhist_3='/Users/david/Code/EA/ea-dm-base-infra/infra'
-let g:netrw_dirhist_2='/Users/david/Code/EA/ea-dm-base-infra'
-let g:netrw_dirhist_1='/Users/david/Code/EA/ea-dm-base-infra/infra/s3'
-let g:netrw_dirhist_0='/Users/david/Code/EA/ea-dm-base-infra/infra/s3-recon'

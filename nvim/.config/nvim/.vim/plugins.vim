@@ -15,8 +15,10 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'chriskempson/base16-vim'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-telescope/telescope.nvim' " Fuzzy search
+Plug 'itchyny/lightline.vim' " Status line
 
-" Typescript stuff
+"Typescript stuff
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
@@ -44,3 +46,9 @@ let g:highlightedyank_highlight_duration = 150
 
 " Tree
 nnoremap <F2> :NvimTreeToggle<CR>
+
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
