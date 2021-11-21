@@ -4,10 +4,11 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'lifepillar/vim-mucomplete'
 Plug 'davidhalter/jedi-vim'
 Plug 'hashivim/vim-terraform'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'jdsimcoe/hyper.vim'
 Plug 'machakann/vim-highlightedyank'
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
+Plug 'rstacruz/vim-closer'
 Plug 'fladson/vim-kitty'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-vividchalk'
@@ -17,6 +18,7 @@ Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-telescope/telescope.nvim' " Fuzzy search
 Plug 'itchyny/lightline.vim' " Status line
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "Typescript stuff
 Plug 'neovim/nvim-lspconfig'

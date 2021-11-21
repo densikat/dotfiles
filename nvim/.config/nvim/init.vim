@@ -38,6 +38,8 @@ let linting_path = glob(data_dir.'linting.vim')
 let asmx86_path = glob(data_dir.'asmx86.vim')
 let lsp_path = glob(data_dir.'lua/typescript.lua')
 let tree_path = glob(data_dir.'lua/nvimtree.lua')
+let treesitter_path = glob(data_dir.'lua/treesitter.lua')
+let pairclose_path = glob(data_dir.'lua/pairclose.lua')
 
 " LEADER KEY
 let mapleader = " " " map leader to Space
@@ -67,6 +69,12 @@ exec "source " . lsp_path
 
 " NVIM tree
 exec "source " . tree_path
+
+" Treesitter
+exec "source " . treesitter_path
+
+" Pair close
+exec "source " . pairclose_path
 
 highlight Pmenu ctermbg=gray guibg=gray
 hi MatchParen ctermfg=black
