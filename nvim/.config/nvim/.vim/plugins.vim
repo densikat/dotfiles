@@ -1,8 +1,6 @@
 call plug#begin('~/.config/nvim/.vim/plugged')
 " Python Plugins
 Plug 'psf/black', { 'branch': 'stable' }
-Plug 'lifepillar/vim-mucomplete'
-Plug 'davidhalter/jedi-vim'
 Plug 'hashivim/vim-terraform'
 "Plug 'sheerun/vim-polyglot'
 Plug 'jdsimcoe/hyper.vim'
@@ -20,12 +18,22 @@ Plug 'nvim-telescope/telescope.nvim' " Fuzzy search
 Plug 'itchyny/lightline.vim' " Status line
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Vim Script
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+
 "Typescript stuff
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/cmp-buffer'
+
+
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -36,7 +44,6 @@ call plug#end()
 " Python Settings
 " Requires Jedi to be installed via pip
 autocmd BufWritePre *.py execute ':Black'
-let g:jedi#popup_on_dot = 0
 
 " Terraform Settings
 " Requires terraform installed on the path
@@ -54,3 +61,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Trouble
+nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+

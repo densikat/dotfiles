@@ -7,8 +7,8 @@
 " ctrl+x ctrl+o -> omnifunc
 set omnifunc=syntaxcomplete#Complete
 
-"MuComplete settings
-set completeopt+=menuone
+"nvim-cmp settings
+set completeopt=menu,menuone,noselect
 set shortmess+=c
 set belloff+=ctrlg
 
