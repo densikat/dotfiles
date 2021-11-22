@@ -15,6 +15,12 @@ endif"
 autocmd vimenter * colorscheme base16-brewer
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
+"
+" Highlight on yank
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout = 130}
+augroup END
 
 " Highlight incremental search and search terms
 set is hls
@@ -76,10 +82,13 @@ exec "source " . tree_path
 
 " Treesitter
 exec "source " . treesitter_path
+"
+" Pairs
+exec "source " . pairclose_path
 
-highlight Pmenu ctermbg=gray guibg=gray
-hi MatchParen ctermfg=black
-hi MatchParen ctermbg=white
+"highlight Pmenu ctermbg=gray guibg=gray
+"hi MatchParen ctermfg=black
+"hi MatchParen ctermbg=white
 
 " Override default backspace behaviour
 set backspace=indent,eol,start
@@ -89,3 +98,4 @@ set formatoptions-=cro
 
 " Line number settings
 set number
+

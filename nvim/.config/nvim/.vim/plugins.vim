@@ -2,14 +2,8 @@ call plug#begin('~/.config/nvim/.vim/plugged')
 " Python Plugins
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'hashivim/vim-terraform'
-"Plug 'sheerun/vim-polyglot'
-Plug 'jdsimcoe/hyper.vim'
-Plug 'machakann/vim-highlightedyank'
 Plug 'windwp/nvim-autopairs'
-Plug 'rstacruz/vim-closer'
 Plug 'fladson/vim-kitty'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'tpope/vim-vividchalk'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'chriskempson/base16-vim'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -51,7 +45,7 @@ let g:terraform_align = 1
 let g:terraform_fmt_on_save = 1
 
 " Yank highlighting
-let g:highlightedyank_highlight_duration = 150
+"let g:highlightedyank_highlight_duration = 150
 
 " Tree
 nnoremap <F2> :NvimTreeToggle<CR>
