@@ -114,6 +114,9 @@ lsp.terraformls.setup{
   root_dir = lsp.util.root_pattern("infra"),
 }
 
+lsp.yamlls.setup{}
+
+lsp.bashls.setup{}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {

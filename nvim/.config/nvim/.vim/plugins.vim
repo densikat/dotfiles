@@ -27,6 +27,8 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-buffer'
 
+"
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -59,4 +61,3 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Trouble
 nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-
