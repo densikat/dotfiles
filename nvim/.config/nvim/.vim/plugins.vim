@@ -27,6 +27,8 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-buffer'
 
+"
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -51,11 +53,11 @@ let g:terraform_fmt_on_save = 1
 nnoremap <F2> :NvimTreeToggle<CR>
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope git_files<cr>
+nnoremap <leader>fa <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Trouble
 nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-

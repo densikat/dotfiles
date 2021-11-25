@@ -13,6 +13,92 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+(setq evil-want-keybinding nil)
+
+;; ORG
+
+(setq default-directory "~/orgnotes/")
+
+
+(set-face-attribute 'default nil :height (* 13 10));13pt
+(set-face-attribute 'fixed-pitch nil :height (* 13 10));13pt
+(set-face-attribute 'variable-pitch nil :height (* 13 10));13pt
+
+(setq org-startup-with-inline-images t)
+
+(defun efs/org-font-setup ()
+        (font-lock-add-keywords 'org-mode
+                                  '(("^ *\\([-]\\) "
+                                     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+
+        (setq default-frame-alist '((font . "Monaco-12")))
+
+        (let* ((variable-tuple
+                  (cond ((x-list-fonts "Monaco")         '(:font "Monaco"))
+                        ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+                        ((x-list-fonts "Verdana")         '(:font "Verdana"))
+                        ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+                        (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+                 (base-font-color     (face-foreground 'default nil 'default))
+                 (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+            (custom-theme-set-faces
+             'user
+             `(org-level-8 ((t (,@headline ,@variable-tuple))))
+             `(org-level-7 ((t (,@headline ,@variable-tuple))))
+             `(org-level-6 ((t (,@headline ,@variable-tuple))))
+             `(org-level-5 ((t (,@headline ,@variable-tuple))))
+             `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.05))))
+             `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.1))))
+             `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.25))))
+             `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
+             `(org-document-title ((t (,@headline ,@variable-tuple :height 1.75 :underline nil))))))
+  )
+
+(defun efs/org-mode-setup ()
+  (org-indent-mode)
+  (visual-line-mode 1))
+
+(use-package org
+  :pin org
+  :commands (org-capture org-agenda)
+  :hook (org-mode . efs/org-mode-setup)
+  :config
+  (setq org-ellipsis " ▾")
+
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (efs/org-font-setup)
+
+  )
+
+(setq org-image-actual-width nil)
+
+(use-package org-download
+  :ensure t
+  :defer t
+  :init
+  ;; Add handlers for drag-and-drop when Org is loaded.
+  (with-eval-after-load 'org
+    (org-download-enable)))
+
+;; Disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 ;; SCRATCH
 
@@ -72,16 +158,6 @@
   (define-key global-map (kbd "C-x C-w") 'linux-copy)
   (define-key global-map (kbd "C-x C-y") 'linux-paste)))
 
-;; FONTS
-
-;(set-face-attribute 'default nil :font "Fira Code Retina")
-;; Set the fixed pitch face
-;(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina")
-;; Set the variable pitch face
-;(set-face-attribute 'variable-pitch nil :font "Cantarell")
-(set-face-attribute 'default nil :height (* 13 10));13pt
-(set-face-attribute 'fixed-pitch nil :height (* 13 10));13pt
-(set-face-attribute 'variable-pitch nil :height (* 13 10));13pt
 
 
 ;; EVIL MODE
@@ -134,12 +210,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(rainbow-delimiters which-key doom-themes doom-modeline use-package popup ivy-rich helm-core evil-collection counsel)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 ;; WHICH KEY
 
@@ -152,3 +223,18 @@
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-document-title ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco" :height 1.75 :underline nil))))
+ '(org-level-1 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco" :height 1.5))))
+ '(org-level-2 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco" :height 1.25))))
+ '(org-level-3 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco" :height 1.1))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco" :height 1.05))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "mac:textColor" :font "Monaco")))))
