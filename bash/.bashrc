@@ -41,12 +41,10 @@ export PATH="$HOME/opt/cross/bin:/home/david/.local/kitty.app/bin:/home/david/.c
 export AIRFLOW_HOME=/Users/david/airflow2
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}"'
-export VISUAL=nvim
+export VISUAL=vim
 export EDITOR="$VISUAL"
 export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 export PUPPETEER_EXECUTABLE_PATH=/home/david/.npm-global/lib/node_modules/puppeteer/.local-chromium/linux-901912/chrome-linux/chrome
-
-alias vim="nvim"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"

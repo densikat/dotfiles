@@ -1,7 +1,11 @@
-" Basic setup
-
 " Turn off VI compatibility
 set nocompatible
+
+" Enable syntax and and plugins (for netrw)
+syntax enable
+filetype on
+filetype plugin on
+filetype indent on
 
 " Plug
 
@@ -10,28 +14,27 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif"
-
 " GUI stuff
 autocmd vimenter * colorscheme torte
 set background=dark
+set textwidth=79
+"set t_Co=256
+
+" allow backgrounding buffers without writing thempp" allow backgrounding buffers without writing them
+set hidden
+
+" have some context around the current line always on screen
+set scrolloff=3
+
+" Time out on key codes but not mappings. Makes terminal Vim work sanely
+set notimeout
+set ttimeout
+set ttimeoutlen=100
 
 " Highlight incremental search and search terms
 set is hls
-
-" Mouse
-set mouse=a "improves mouse scroll behaviour in terminal
-
-" Enable syntax and and plugins (for netrw)
-syntax enable
-filetype on
-filetype plugin on
-filetype indent on
-
-" Tags
-source ~/.vim/plugins.vim
-
-" Autocomplete
-source ~/.vim/autocomplete.vim
+set ignorecase
+set smartcase
 
 " Override default backspace behaviour
 set backspace=indent,eol,start
@@ -41,6 +44,21 @@ set formatoptions-=cro
 
 " Line number settings
 set number
+
+" Set modelines off
+set modelines=0
+
+" Mouse
+set mouse=a "improves mouse scroll behaviour in terminal
+
+" Key Mappings
+source ~/.vim/mappings.vim
+
+" Tags
+source ~/.vim/plugins.vim
+
+" Autocomplete
+source ~/.vim/autocomplete.vim
 
 " Language specific filestype stuff (tabs, spaces etc)
 source ~/.vim/filetype.vim
@@ -62,7 +80,3 @@ source ~/.vim/statusline.vim
 
 " X86 Assembly
 source ~/.vim/asmx86.vim
-
-highlight Pmenu ctermbg=gray guibg=gray
-hi MatchParen ctermfg=black
-hi MatchParen ctermbg=white

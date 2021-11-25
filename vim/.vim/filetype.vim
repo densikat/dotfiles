@@ -4,7 +4,7 @@
 " characters, if starting a new line in the middle of a comment automatically
 " insert the comment leader characters:
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
-autocmd FileType c,cpp,java set formatoptions+=ro shiftwidth=2 softtabstop=2
+autocmd FileType c,cpp,java set formatoptions+=ro shiftwidth=4 softtabstop=4
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 

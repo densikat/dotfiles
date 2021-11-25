@@ -8,7 +8,7 @@
 set omnifunc=syntaxcomplete#Complete
 
 "MuComplete settings
-set completeopt+=menuone
+set completeopt+=menuone,preview
 set shortmess+=c
 set belloff+=ctrlg
 

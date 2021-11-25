@@ -1,20 +1,42 @@
 call plug#begin('~/.vim/plugged')
-" Python Plugins
-Plug 'psf/black', { 'branch': 'stable' }
+" BETTER FILE TREE
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" WHICH KEY
+Plug 'liuchengxu/vim-which-key'
+
+" SURROUND THINGS
+Plug 'tpope/vim-surround'
+
+" GIT
+Plug 'tpope/vim-fugitive'
+
+" Uses native completion
 Plug 'lifepillar/vim-mucomplete'
-Plug 'davidhalter/jedi-vim'
+
+" Basic terraform plugin
 Plug 'hashivim/vim-terraform'
+
+" Python formatting
+Plug 'psf/black', { 'branch': 'stable' }
+
+" Syntax highlighting
 Plug 'sheerun/vim-polyglot'
-Plug 'jdsimcoe/hyper.vim'
+
+" Highlight yanked buffer
 Plug 'machakann/vim-highlightedyank'
-Plug 'jiangmiao/auto-pairs'
-Plug 'fladson/vim-kitty'
+
+" CLOSE PAIRS
+Plug 'tmsvg/pear-tree'
+
+" FUZZY SEARCH
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Python Settings
 " Requires Jedi to be installed via pip
 autocmd BufWritePre *.py execute ':Black'
-let g:jedi#popup_on_dot = 0
 
 " Terraform Settings
 " Requires terraform installed on the path
@@ -22,5 +44,5 @@ let g:terraform_align = 1
 let g:terraform_fmt_on_save = 1
 
 " Yank highlighting
-let g:highlightedyank_highlight_duration = 150
+let g:highlightedyank_highlight_duration = 120
 
