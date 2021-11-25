@@ -15,10 +15,16 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif"
 " GUI stuff
-autocmd vimenter * colorscheme torte
+autocmd vimenter * colorscheme base16-brewer
 set background=dark
 set textwidth=79
-"set t_Co=256
+
+" Tmux related settings
+if exists('+termguicolors') && ($TERM == "screen-256color" || $TERM == "tmux-256color")
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
 
 " allow backgrounding buffers without writing thempp" allow backgrounding buffers without writing them
 set hidden

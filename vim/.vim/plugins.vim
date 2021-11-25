@@ -32,6 +32,9 @@ Plug 'tmsvg/pear-tree'
 " FUZZY SEARCH
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+" THEMES
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " Python Settings
