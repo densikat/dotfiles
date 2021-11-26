@@ -26,6 +26,9 @@ if exists('+termguicolors') && ($TERM == "screen-256color" || $TERM == "tmux-256
     set termguicolors
 endif
 
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 " Unwanted characters
 " https://vim.fandom.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
