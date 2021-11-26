@@ -36,6 +36,9 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" Default split behaviour
+set splitbelow
+set splitright
 
 " No swap file
 set noswapfile
