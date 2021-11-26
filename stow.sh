@@ -8,6 +8,7 @@
         stow -vSt ~ tmuxinator
         stow -vSt ~ emacs
         stow -vSt ~ nvim
+        stow -vSt ~ tmux
 
         rm -f ~/.gitignore
         echo "tags" > ~/.gitignore

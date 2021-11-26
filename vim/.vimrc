@@ -1,7 +1,7 @@
 " Turn off VI compatibility
 set nocompatible
 
-" Enable syntax and and plugins (for netrw)
+" Enable syntax and plugins
 syntax enable
 filetype on
 filetype plugin on
@@ -26,7 +26,21 @@ if exists('+termguicolors') && ($TERM == "screen-256color" || $TERM == "tmux-256
     set termguicolors
 endif
 
-" allow backgrounding buffers without writing thempp" allow backgrounding buffers without writing them
+" Unwanted characters
+" https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+
+" No swap file
+set noswapfile
+
+" allow backgrounding buffers without writing them
 set hidden
 
 " have some context around the current line always on screen
@@ -57,6 +71,9 @@ set modelines=0
 " Mouse
 set mouse=a "improves mouse scroll behaviour in terminal
 
+" Polyglot
+let g:polyglot_disabled = ['csv']
+
 " Key Mappings
 source ~/.vim/mappings.vim
 
@@ -75,9 +92,6 @@ source ~/.vim/filesearch.vim
 " Tags
 source ~/.vim/tags.vim
 
-" File explorer
-source ~/.vim/netrw.vim
-
 " Linting
 source ~/.vim/linting.vim
 
@@ -86,3 +100,6 @@ source ~/.vim/statusline.vim
 
 " X86 Assembly
 source ~/.vim/asmx86.vim
+
+" Abbreviations
+source ~/.vim/abbreviations.vim

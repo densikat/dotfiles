@@ -29,9 +29,12 @@ Plug 'machakann/vim-highlightedyank'
 " CLOSE PAIRS
 Plug 'tmsvg/pear-tree'
 
-" FUZZY SEARCH
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Fuzzy find
+Plug 'ctrlpvim/ctrlp.vim'
 
 " THEMES
 Plug 'chriskempson/base16-vim'
@@ -48,4 +51,13 @@ let g:terraform_fmt_on_save = 1
 
 " Yank highlighting
 let g:highlightedyank_highlight_duration = 120
+
+" Trigger configuration. You need to change this to something other than <tab>
+" if you use one of the following:
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" CtrlP
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
