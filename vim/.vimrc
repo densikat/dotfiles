@@ -26,6 +26,7 @@ if exists('+termguicolors') && ($TERM == "screen-256color" || $TERM == "tmux-256
     set termguicolors
 endif
 
+" Change cursor shape on insert mode
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
