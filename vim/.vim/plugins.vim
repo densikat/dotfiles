@@ -52,6 +52,9 @@ let g:highlightedyank_highlight_duration = 120
 let g:mucomplete#chains = { 'default':
             \ [ 'omni','tags','keyn','keyp','path','line'] }
 
+" Polyglot
+let g:polyglot_disabled = ['autoindent']
+
 " CtrlP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_by_filename = 1

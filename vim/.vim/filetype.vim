@@ -23,8 +23,8 @@ autocmd FileType asm set noexpandtab shiftwidth=8 softtabstop=0 syntax=nasm ft=n
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Tabs and spaces
-set tabstop=4 " display 4 spaces whenever there is a tab
-set expandtab " expand tabs to 4 spaces
+"set tabstop=4 " display 4 spaces whenever there is a tab
+"set expandtab " expand tabs to 4 spaces
 
 augroup filetypedetect
       au! BufRead,BufNewFile *.asm       setfiletype nasm

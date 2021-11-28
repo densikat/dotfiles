@@ -96,6 +96,9 @@ source ~/.vim/filetype.vim
 " Set path for :find command, includes ignores etc
 source ~/.vim/filesearch.vim
 
+" My helper functions
+source ~/.vim/functions.vim
+
 " Tags
 source ~/.vim/tags.vim
 
