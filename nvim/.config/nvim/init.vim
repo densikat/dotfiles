@@ -22,6 +22,44 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout = 130}
 augroup END
 
+" Tmux related settings
+if exists('+termguicolors') && ($TERM == "screen-256color" || $TERM == "tmux-256color")
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
+" Change cursor shape on insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" Unwanted characters
+" https://vim.fandom.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Default split behaviour
+set splitbelow
+set splitright
+
+" No swap file
+set noswapfile
+
+" allow backgrounding buffers without writing them
+set hidden
+
+" have some context around the current line always on screen
+set scrolloff=3
+
+" Time out on key codes but not mappings. Makesterminal Vim work sanely
+set notimeout
+set ttimeout
+ 
 " Highlight incremental search and search terms
 set is hls
 
@@ -34,6 +72,8 @@ filetype on
 filetype plugin on
 filetype indent on
 
+set clipboard^=unnamed,unnamedplus
+
 " Tags
 let plugin_path = glob(data_dir.'plugins.vim')
 let autocomplete_path = glob(data_dir.'autocomplete.vim')
@@ -44,9 +84,10 @@ let linting_path = glob(data_dir.'linting.vim')
 let personal_path = glob(data_dir.'personal.vim')
 let asmx86_path = glob(data_dir.'asmx86.vim')
 let lsp_path = glob(data_dir.'lua/lsp.lua')
-let tree_path = glob(data_dir.'lua/nvimtree.lua')
 let treesitter_path = glob(data_dir.'lua/treesitter.lua')
 let pairclose_path = glob(data_dir.'lua/pairclose.lua')
+let mappings_path = glob(data_dir.'mappings.vim')
+let functions_path = glob(data_dir.'functions.vim')
 
 " LEADER KEY
 let mapleader = " " " map leader to Space
@@ -77,14 +118,17 @@ exec "source " . asmx86_path
 " LSP (for typescript)
 exec "source " . lsp_path
 
-" NVIM tree
-exec "source " . tree_path
-
 " Treesitter
 exec "source " . treesitter_path
 "
 " Pairs
 exec "source " . pairclose_path
+
+" Mappings
+exec "source " . mappings_path
+
+" Functions
+exec "source " . functions_path
 
 "highlight Pmenu ctermbg=gray guibg=gray
 "hi MatchParen ctermfg=black
