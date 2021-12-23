@@ -9,7 +9,7 @@ let data_dir = '~/.config/nvim/.vim/'
 if empty(glob(data_dir . 'autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif"
+endif
 
 " GUI stuff
 autocmd vimenter * colorscheme base16-brewer
@@ -86,6 +86,7 @@ let asmx86_path = glob(data_dir.'asmx86.vim')
 let lsp_path = glob(data_dir.'lua/lsp.lua')
 let treesitter_path = glob(data_dir.'lua/treesitter.lua')
 let pairclose_path = glob(data_dir.'lua/pairclose.lua')
+let comment_path = glob(data_dir.'lua/comment.lua')
 let mappings_path = glob(data_dir.'mappings.vim')
 let functions_path = glob(data_dir.'functions.vim')
 
@@ -120,7 +121,10 @@ exec "source " . lsp_path
 
 " Treesitter
 exec "source " . treesitter_path
-"
+
+" Comment
+exec "source " . comment_path
+
 " Pairs
 exec "source " . pairclose_path
 

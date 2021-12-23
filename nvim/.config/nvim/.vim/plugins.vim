@@ -12,6 +12,7 @@ Plug 'nvim-telescope/telescope.nvim' " Fuzzy search
 Plug 'itchyny/lightline.vim' " Status line
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-orgmode/orgmode'
+Plug 'numToStr/Comment.nvim'
 
 " Vim Script
 Plug 'kyazdani42/nvim-web-devicons'

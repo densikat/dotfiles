@@ -14,6 +14,10 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" LSP
+nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<cr>
+
 " Trouble
 nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 
