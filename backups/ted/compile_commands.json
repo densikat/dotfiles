@@ -1,0 +1,43 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-o",
+      "main.o",
+      "main.c"
+    ],
+    "directory": "/home/david/Code/personal/ted",
+    "file": "/home/david/Code/personal/ted/main.c",
+    "output": "/home/david/Code/personal/ted/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-I.",
+      "-Wall",
+      "-Wextra",
+      "-Wundef",
+      "-Wshadow",
+      "-Wpointer-arith",
+      "-Wcast-align",
+      "-Wstrict-prototypes",
+      "-Wstrict-overflow=4",
+      "-Wwrite-strings",
+      "-Waggregate-return",
+      "-Wcast-qual",
+      "-Wswitch-default",
+      "-Wswitch-enum",
+      "-Wconversion",
+      "-Wunreachable-code",
+      "-g",
+      "-o",
+      "ted",
+      "main.c"
+    ],
+    "directory": "/home/david/Code/personal/ted",
+    "file": "/home/david/Code/personal/ted/main.c",
+    "output": "/home/david/Code/personal/ted/ted"
+  }
+]
