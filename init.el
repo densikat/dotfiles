@@ -1,17 +1,32 @@
 (defvar my-os
   (cond ((eq system-type 'windows-nt) "windows")
                 ((eq system-type 'darwin) "mac")
+                ((eq system-type 'gnu/linux) "linux")
                 (t "unknown")))
 
 (defvar plugin-path
   (cond ((equal my-os "windows") "c:/emacs/plugins")
                 ((equal my-os "mac") "~/Code/emacs/plugins")
+                ((equal my-os "linux") "~/Code/emacs/plugins")
                 (t "~/default")))
 
 (defvar default-font
   (cond ((equal my-os "windows") "Cascadia Code 10")
                 ((equal my-os "mac") "Monaco 15")
+                ((equal my-os "linux") "Ubuntu Mono 14")
                 (t "Monaco 15")))
+
+(defvar default-spelling-program
+  (cond ((equal my-os "windows") "ispell")
+                ((equal my-os "mac") "/usr/local/bin/aspell")
+                ((equal my-os "linux") "/usr/bin/aspell")
+                (t "/usr/bin/aspell")))
+
+(defvar default-notes-path
+  (cond ((equal my-os "windows") "c:/orgnotes/")
+                ((equal my-os "mac") "~/orgnotes/")
+                ((equal my-os "linux") "~/orgnotes/")
+                (t "~/orgnotes/")))
 
 ;; Fullscreen
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -50,7 +65,7 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Spelling
-(setq ispell-program-name "/usr/local/bin/aspell") ;; TODO set this as a variable for platform independenc
+(setq ispell-program-name default-spelling-program)
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 (add-hook 'org-mode-hook 'turn-on-flyspell)
 
@@ -66,55 +81,6 @@
 (setq auto-save-default nil)
 
 ;; TODAYS NOTES
-(defun create-daily-notes ()
-  (interactive)
-  (let* ((notes-dir "~/orgnotes/") ;; TODO set this as a variable for platform independenc
-         (template-file (expand-file-name "template.org" notes-dir))
-         (today (format-time-string "%Y-%m-%d"))
-         (notes-file (expand-file-name (concat today ".org") notes-dir)))
-    (copy-file template-file notes-file)
-    (find-file notes-file)))
-
-(global-set-key (kbd "C-c n") 'create-daily-notes)
-
-(defun open-daily-notes ()
-  (interactive)
-  (let* ((notes-dir "~/orgnotes/") ;; TODO set this as a variable for platform independenc
-         (template-file (expand-file-name "template.org" notes-dir))
-         (today (format-time-string "%Y-%m-%d"))
-         (notes-file (expand-file-name (concat today ".org") notes-dir)))
-		(find-file notes-file)
-		(if (file-exists-p notes-file)
-			(with-current-buffer (find-file-noselect notes-file)
-			  (org-copy-visible)
-			  (with-current-buffer (find-file-noselect (expand-file-name (concat today ".org") notes-dir))
-				(org-mode)
-				(yank))))))
-
-(global-set-key (kbd "C-c o") 'open-daily-notes)
-
-(defun copy-previous-day-notes ()
-  (interactive)
-  (let* ((notes-dir "~/orgnotes/") ;; TODO set this as a variable for platform independenc
-         (today (format-time-string "%Y-%m-%d"))
-         (yesterday (format-time-string "%Y-%m-%d" (time-subtract (current-time) (days-to-time 1))))
-         (previous-day-notes-file (expand-file-name (concat yesterday ".org") notes-dir))
-         (fallback-notes-file (expand-file-name (concat (format-time-string "%Y-%m-%d" (time-subtract (current-time) (days-to-time 3))) ".org") notes-dir)))
-    (if (file-exists-p previous-day-notes-file)
-        (with-current-buffer (find-file-noselect previous-day-notes-file)
-          (org-copy-visible)
-          (with-current-buffer (find-file-noselect (expand-file-name (concat today ".org") notes-dir))
-            (org-mode)
-            (yank)))
-      (message "Previous day's notes not found. Falling back to the notes from two days ago.")
-      (when (file-exists-p fallback-notes-file)
-        (with-current-buffer (find-file-noselect fallback-notes-file)
-          (org-copy-visible)
-          (with-current-buffer (find-file-noselect (expand-file-name (concat today ".org") notes-dir))
-            (org-mode)
-            (yank)))))))
-
-(global-set-key (kbd "C-c y") 'copy-previous-day-notes)
 
 (defun create-or-open-note-for-todo ()
   "Create or open a note file for the parent heading of the current TODO item."
@@ -138,4 +104,39 @@
       (unless (search-backward "#+END:" nil t)
         (insert "\n\n#+END:\n")))))
 
-(global-set-key (kbd "C-c p") 'create-or-open-note-for-todo)
+(global-set-key (kbd "C-c n") 'create-or-open-note-for-todo)
+
+(defun find-and-open-file-by-date (directory)
+  "Check for a file in DIRECTORY with a date-based filename and open it if found."
+  (let ((current-date (format-time-string "%Y-%m-%d"))
+        (days-to-check 0)
+        (found-file nil)
+	(file-path nil)
+	(is-today nil))
+    (while (and (not found-file) (< days-to-check 7))
+      (let* ((date-to-check (time-subtract (current-time) (days-to-time days-to-check)))
+            (file-to-check (concat directory (format-time-string "%Y-%m-%d" date-to-check) ".org")))
+        (when (file-exists-p file-to-check)
+          (setq found-file t
+		file-path file-to-check)
+	  (if (equal current-date (format-time-string "%Y-%m-%d" date-to-check))
+		(setq is-today t)
+	      )))
+      (setq days-to-check (1+ days-to-check)))
+    (values found-file file-path is-today)))
+
+(defun todays-notes (directory)
+    (let ((result (find-and-open-file-by-date directory))
+	  (today (format-time-string "%Y-%m-%d"))
+	  (template-file (expand-file-name "todo-template.org" directory))
+	  )
+    (multiple-value-bind (file-found file-path is-today) result
+	(if (eq file-found t)
+	    (if (eq is-today t)
+		(find-file file-path) ;; We have a file for today, just open it
+	      (copy-file file-path (expand-file-name (concat today ".org") directory)) ;; We have an older file, copy it and open
+	      (find-file (expand-file-name (concat today ".org") directory)))
+	(copy-file template-file (expand-file-name (concat today ".org") directory)))))) ;; We have no file, copy from template
+
+
+(global-set-key (kbd "C-c o") (lambda () (interactive) (todays-notes default-notes-path)))
