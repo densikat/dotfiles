@@ -76,6 +76,13 @@
 (evil-mode 1)
 (setf evil-org-key-theme '(navigation insert textobjects additional))
 
+;; TODO Keywords
+(setq org-todo-keywords
+      '((sequence "TODO" "FEEDBACK" "RELEASE" "|" "DONE")))
+
+(setq org-todo-keyword-faces
+ '(("RELEASE" . "orange") ("FEEDBACK" . "magenta") ("DONE" . "green"))
+ )
 
 ;; Disable auto-save
 (setq auto-save-default nil)
